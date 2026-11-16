@@ -53,8 +53,8 @@ def normalize_text(text: str) -> str:
     """
     Normalize text for comparison:
     - Lowercase
-    - Remove hashtags and punctuation
-    - Keep only a-z, 0-9, and Devanagari characters (\u0900-\u097F)
+    - Remove hashtags and punctuation (including Devanagari danda punctuation \u0964, \u0965)
+    - Keep only a-z, 0-9, and Devanagari word characters (\u0900-\u097F)
     - Collapse multiple spaces
     """
     if not text or not isinstance(text, str):
@@ -63,8 +63,10 @@ def normalize_text(text: str) -> str:
     lowered = text.lower()
     # Remove hashtag tokens (e.g. #fitness, #वजन)
     without_hashtags = re.sub(r"#\S+", " ", lowered)
+    # Remove Devanagari danda and double danda punctuation (\u0964, \u0965)
+    without_danda = re.sub(r"[\u0964\u0965\u0970\u0971]", " ", without_hashtags)
     # Retain only a-z, 0-9, Devanagari \u0900-\u097F, and spaces
-    cleaned = re.sub(r"[^a-z0-9\u0900-\u097f\s]", " ", without_hashtags)
+    cleaned = re.sub(r"[^a-z0-9\u0900-\u097f\s]", " ", without_danda)
     # Collapse multiple whitespace characters into single space
     normalized = re.sub(r"\s+", " ", cleaned).strip()
     return normalized
