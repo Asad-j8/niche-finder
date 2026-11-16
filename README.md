@@ -108,6 +108,30 @@ Open your browser at `http://localhost:8501`.
 
 ---
 
+## ☁️ 1-Click Cloud Deployment (Streamlit Community Cloud)
+
+Deploy for free in 60 seconds with no server management:
+1. Fork or push this repository to your GitHub account (`https://github.com/Asad-j8/niche-finder`).
+2. Visit [share.streamlit.io](https://share.streamlit.io/) and log in with GitHub.
+3. Click **"New app"**.
+4. Select your repository: `Asad-j8/niche-finder`, branch: `main`, and main file path: `app.py`.
+5. Click **"Deploy"**!
+
+---
+
+## 🐳 Docker Deployment
+
+Run instantly using Docker:
+```bash
+# Build Docker image
+docker build -t tiktok-niche-finder .
+
+# Run container on port 8501
+docker run -d -p 8501:8501 --name tiktok-niche-finder tiktok-niche-finder
+```
+
+---
+
 ## 🌐 Linux Virtual Server Deployment (VPS / Ubuntu / Debian)
 
 Follow these steps to deploy on a Linux virtual server:
